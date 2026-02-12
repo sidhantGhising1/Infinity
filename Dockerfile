@@ -58,12 +58,6 @@ RUN echo "opcache.enable=1" >> /usr/local/etc/php/conf.d/opcache.ini \
     && echo "opcache.max_accelerated_files=4000" >> /usr/local/etc/php/conf.d/opcache.ini \
     && echo "opcache.validate_timestamps=0" >> /usr/local/etc/php/conf.d/opcache.ini
 
-# Configure PHP-FPM to listen on a unix socket
-RUN sed -i 's|listen = 127.0.0.1:9000|listen = /var/run/php-fpm.sock|' /usr/local/etc/php-fpm.d/www.conf \
-    && sed -i 's|;listen.owner = www-data|listen.owner = nginx|' /usr/local/etc/php-fpm.d/www.conf \
-    && sed -i 's|;listen.group = www-data|listen.group = nginx|' /usr/local/etc/php-fpm.d/www.conf \
-    && sed -i 's|;listen.mode = 0660|listen.mode = 0660|' /usr/local/etc/php-fpm.d/www.conf
-
 WORKDIR /var/www/html
 
 # Copy application code with dependencies from build stages
