@@ -29,11 +29,8 @@ php artisan config:cache
 php artisan view:cache
 
 # Run database migrations
-# NOTE: Using migrate:fresh for initial deployment to clear partial tables from
-# previous failed attempts. After first successful deploy, change this back to:
-#   php artisan migrate --force
 echo ">> Running database migrations..."
-php artisan migrate:fresh --force
+php artisan migrate --force
 
 # Create storage link
 php artisan storage:link --force 2>/dev/null || true
