@@ -9,8 +9,7 @@ echo "========================================="
 export PORT="${PORT:-10000}"
 
 # Substitute the PORT into Nginx config
-envsubst '${PORT}' < /etc/nginx/nginx.conf > /tmp/nginx.conf
-cp /tmp/nginx.conf /etc/nginx/nginx.conf
+sed -i "s/\${PORT}/$PORT/g" /etc/nginx/nginx.conf
 
 # Ensure storage directories exist
 mkdir -p /var/www/html/storage/framework/{sessions,views,cache}
