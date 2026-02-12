@@ -1,0 +1,16 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class FeeStructure extends Model
+{
+    protected $fillable = [
+        'consultancy_name',
+        'fee_type',
+        'amount',
+        'currency'
+    ];
+}
+
